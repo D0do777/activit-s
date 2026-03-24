@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Habit Tracker</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<header>
+<h1>Mes Objectifs</h1>
+<button id="addTaskBtn">+</button>
+</header>
+
+<main>
+
+<section id="tasksPage" class="page active">
+<div id="taskList"></div>
+</section>
+
+<section id="calendarPage" class="page">
+<input type="date" id="dateSelector">
+<div id="historyList"></div>
+</section>
+
+<section id="statsPage" class="page">
+<canvas id="statsChart"></canvas>
+</section>
+
+<section id="settingsPage" class="page">
+
+<h2>Ajouter un objectif</h2>
+
+<input id="title" placeholder="Titre">
+
+<input id="subtitle" placeholder="Sous titre">
+
+<select id="icon">
+<option>📚</option>
+<option>🏃</option>
+<option>💻</option>
+<option>🧠</option>
+<option>📖</option>
+</select>
+
+<input type="time" id="time">
+
+<select id="repeat">
+<option value="daily">Tous les jours</option>
+<option value="weekly">Chaque semaine</option>
+<option value="once">Une fois</option>
+</select>
+
+<button onclick="addTask()">Ajouter</button>
+
+</section>
+
+</main>
+
+<nav>
+
+<button onclick="showPage('tasksPage')">Aujourd'hui</button>
+
+<button onclick="showPage('calendarPage')">Calendrier</button>
+
+<button onclick="showPage('statsPage')">Stats</button>
+
+<button onclick="showPage('settingsPage')">Ajouter</button>
+
+</nav>
+
+<script src="js/storage.js"></script>
+<script src="js/tasks.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
