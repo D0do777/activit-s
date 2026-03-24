@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Habit Tracker</title>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Mes Objectifs</title>
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -16,49 +18,63 @@
 
 <header>
 <h1>Mes Objectifs</h1>
-<button id="addTaskBtn">+</button>
 </header>
 
 <main>
 
-<section id="tasksPage" class="page active">
+<section id="todayPage" class="page active">
+
 <div id="taskList"></div>
+
 </section>
 
-<section id="calendarPage" class="page">
-<input type="date" id="dateSelector">
-<div id="historyList"></div>
-</section>
-
-<section id="statsPage" class="page">
-<canvas id="statsChart"></canvas>
-</section>
-
-<section id="settingsPage" class="page">
+<section id="addPage" class="page">
 
 <h2>Ajouter un objectif</h2>
 
 <input id="title" placeholder="Titre">
 
-<input id="subtitle" placeholder="Sous titre">
+<input id="subtitle" placeholder="Description">
 
 <select id="icon">
+
 <option>📚</option>
 <option>🏃</option>
 <option>💻</option>
 <option>🧠</option>
 <option>📖</option>
+<option>💪</option>
+<option>🧘</option>
+<option>🎨</option>
+<option>🎵</option>
+<option>🍎</option>
+<option>💧</option>
+<option>🛏</option>
+<option>📱</option>
+
 </select>
 
-<input type="time" id="time">
+<input type="time" id="time" placeholder="Heure">
 
-<select id="repeat">
-<option value="daily">Tous les jours</option>
-<option value="weekly">Chaque semaine</option>
-<option value="once">Une fois</option>
-</select>
+<div class="days">
 
-<button onclick="addTask()">Ajouter</button>
+<button class="day" data-day="1">L</button>
+<button class="day" data-day="2">M</button>
+<button class="day" data-day="3">M</button>
+<button class="day" data-day="4">J</button>
+<button class="day" data-day="5">V</button>
+<button class="day" data-day="6">S</button>
+<button class="day" data-day="0">D</button>
+
+</div>
+
+<button class="addBtn" onclick="addTask()">Ajouter l'objectif</button>
+
+</section>
+
+<section id="statsPage" class="page">
+
+<canvas id="statsChart"></canvas>
 
 </section>
 
@@ -66,19 +82,15 @@
 
 <nav>
 
-<button onclick="showPage('tasksPage')">Aujourd'hui</button>
-
-<button onclick="showPage('calendarPage')">Calendrier</button>
-
-<button onclick="showPage('statsPage')">Stats</button>
-
-<button onclick="showPage('settingsPage')">Ajouter</button>
+<button onclick="showPage('todayPage')">🏠</button>
+<button onclick="showPage('addPage')">➕</button>
+<button onclick="showPage('statsPage')">📊</button>
 
 </nav>
 
 <script src="js/storage.js"></script>
+<script src="js/sounds.js"></script>
 <script src="js/tasks.js"></script>
-<script src="js/calendar.js"></script>
 <script src="js/stats.js"></script>
 <script src="js/app.js"></script>
 
