@@ -6,33 +6,27 @@ background:#f2f2f7;
 
 header{
 text-align:center;
-padding:15px;
-background:white;
+padding:18px;
+background:#007AFF;
+color:white;
 font-size:20px;
 font-weight:bold;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
 main{
 padding:15px;
-margin-bottom:80px;
+margin-bottom:90px;
 }
 
 .task{
-
 background:white;
 padding:15px;
-border-radius:14px;
-margin-bottom:10px;
+border-radius:16px;
+margin-bottom:12px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-
-transition:0.2s;
-}
-
-.task:hover{
-transform:scale(1.02);
+box-shadow:0 3px 10px rgba(0,0,0,0.05);
 }
 
 .taskInfo{
@@ -42,28 +36,24 @@ gap:12px;
 }
 
 .icon{
-font-size:24px;
+font-size:26px;
 }
 
 nav{
-
 position:fixed;
 bottom:0;
 width:100%;
 display:flex;
 background:white;
 border-top:1px solid #ddd;
-
 }
 
 nav button{
-
 flex:1;
 border:none;
 background:white;
 font-size:22px;
 padding:15px;
-
 }
 
 .page{
@@ -75,48 +65,46 @@ display:block;
 }
 
 input,select{
-
 width:100%;
 padding:12px;
-margin-top:10px;
+margin-top:12px;
 border-radius:10px;
 border:1px solid #ddd;
-
+font-size:16px;
 }
 
 .addBtn{
-
-margin-top:15px;
+margin-top:20px;
 background:#007AFF;
 color:white;
 border:none;
 padding:15px;
 border-radius:12px;
 font-size:16px;
-
 }
 
 .days{
-
 display:flex;
 gap:6px;
 margin-top:10px;
-
 }
 
 .day{
-
 flex:1;
 padding:10px;
 border-radius:8px;
 border:none;
 background:#e5e5ea;
-
+font-weight:bold;
 }
 
 .day.active{
-
 background:#007AFF;
 color:white;
+}
 
+.deleteBtn{
+background:none;
+border:none;
+font-size:20px;
 }
