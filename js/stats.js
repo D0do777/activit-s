@@ -1,4 +1,6 @@
-function loadStats(){
+let chart
+
+function updateStats(){
 
 let tasks=getTasks()
 
@@ -7,14 +9,28 @@ let total=tasks.length
 
 let ctx=document.getElementById("statsChart")
 
-new Chart(ctx,{
-type:"doughnut",
-data:{
-labels:["Fait","Restant"],
-datasets:[{
-data:[done,total-done]
-}]
+if(chart){
+
+chart.destroy()
+
 }
+
+chart=new Chart(ctx,{
+
+type:"doughnut",
+
+data:{
+
+labels:["Réussi","Restant"],
+
+datasets:[{
+
+data:[done,total-done]
+
+}]
+
+}
+
 })
 
 }
