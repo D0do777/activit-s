@@ -1,13 +1,13 @@
 function getTasks(){
 
-let tasks = localStorage.getItem("tasks")
+let tasks=localStorage.getItem("tasks")
 
-return tasks ? JSON.parse(tasks) : []
+return tasks?JSON.parse(tasks):[]
 
 }
 
 function saveTasks(tasks){
 
-localStorage.setItem("tasks", JSON.stringify(tasks))
+localStorage.setItem("tasks",JSON.stringify(tasks))
 
 }
