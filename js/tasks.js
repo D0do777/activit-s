@@ -1,22 +1,50 @@
+let selectedDays=[]
+
+document.querySelectorAll(".day").forEach(btn=>{
+
+btn.onclick=()=>{
+
+playClick()
+
+btn.classList.toggle("active")
+
+let day=btn.dataset.day
+
+if(selectedDays.includes(day)){
+
+selectedDays=selectedDays.filter(d=>d!==day)
+
+}else{
+
+selectedDays.push(day)
+
+}
+
+}
+
+})
+
 function addTask(){
 
-let title = document.getElementById("title").value
-let subtitle = document.getElementById("subtitle").value
-let icon = document.getElementById("icon").value
-let time = document.getElementById("time").value
-let repeat = document.getElementById("repeat").value
+playClick()
 
-let tasks = getTasks()
+let title=document.getElementById("title").value
+let subtitle=document.getElementById("subtitle").value
+let icon=document.getElementById("icon").value
+let time=document.getElementById("time").value
+
+let tasks=getTasks()
 
 tasks.push({
+
 id:Date.now(),
 title,
 subtitle,
 icon,
 time,
-repeat,
-done:false,
-date:new Date().toISOString().split("T")[0]
+days:selectedDays,
+done:false
+
 })
 
 saveTasks(tasks)
@@ -27,14 +55,34 @@ renderTasks()
 
 function toggleTask(id){
 
-let tasks = getTasks()
+playClick()
 
-tasks = tasks.map(task=>{
+let tasks=getTasks()
+
+tasks=tasks.map(task=>{
+
 if(task.id===id){
+
 task.done=!task.done
+
 }
+
 return task
+
 })
+
+saveTasks(tasks)
+
+renderTasks()
+updateStats()
+
+}
+
+function deleteTask(id){
+
+let tasks=getTasks()
+
+tasks=tasks.filter(t=>t.id!==id)
 
 saveTasks(tasks)
 
@@ -44,15 +92,18 @@ renderTasks()
 
 function renderTasks(){
 
-let list = document.getElementById("taskList")
+let list=document.getElementById("taskList")
 
 list.innerHTML=""
 
-let tasks = getTasks()
+let today=new Date().getDay()
 
-tasks.sort((a,b)=>a.time.localeCompare(b.time))
+let tasks=getTasks()
 
-tasks.forEach(task=>{
+tasks
+.filter(task=>task.days.includes(String(today)))
+.sort((a,b)=>a.time.localeCompare(b.time))
+.forEach(task=>{
 
 let div=document.createElement("div")
 
@@ -67,18 +118,22 @@ div.innerHTML=`
 <div>
 
 <b>${task.title}</b>
-
 <br>
-
 <small>${task.subtitle}</small>
 
 </div>
 
 </div>
 
+<div>
+
 <input type="checkbox"
-${task.done ? "checked":""}
+${task.done?"checked":""}
 onclick="toggleTask(${task.id})">
+
+<button onclick="deleteTask(${task.id})">🗑</button>
+
+</div>
 
 `
 
